@@ -12,6 +12,7 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.EditText
 import androidx.activity.result.contract.ActivityResultContracts
@@ -35,15 +36,13 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var previewView: PreviewView
     private lateinit var rootLayout: ConstraintLayout
-    private lateinit var captureButton: Button
+    private lateinit var captureButton: ImageButton
     private lateinit var bottomSheet: View
     private lateinit var extractedTextView: TextView
     private lateinit var saveToAllergyBtn: Button
-    private lateinit var addAllTextBtn: Button
     private lateinit var manualInputBtn: Button
-    private lateinit var switchModeButton: Button
+    private lateinit var switchModeButton: ImageButton
     private lateinit var modeLabel: TextView
-    private lateinit var notepadButton: Button
     private var imageCapture: ImageCapture? = null
     private lateinit var cameraExecutor: ExecutorService
 
@@ -64,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         "222222222222" to "Caffeine, sugar, flavoring."
     )
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint("ClickableViewAccessibility", "ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -75,11 +74,10 @@ class MainActivity : AppCompatActivity() {
         bottomSheet = findViewById(R.id.bottomSheet)
         extractedTextView = findViewById(R.id.extractedTextView)
         saveToAllergyBtn = findViewById(R.id.saveToAllergyBtn)
-        addAllTextBtn = findViewById(R.id.addAllTextBtn)
         manualInputBtn = findViewById(R.id.manualInputBtn)
         switchModeButton = findViewById(R.id.switchmodebutton)
         modeLabel = findViewById(R.id.textView)
-        notepadButton = findViewById(R.id.notepadButton)
+
 
         cameraExecutor = Executors.newSingleThreadExecutor()
 
@@ -97,21 +95,14 @@ class MainActivity : AppCompatActivity() {
 
         switchModeButton.setOnClickListener {
             isBarcodeMode = !isBarcodeMode
-            val mode = if (isBarcodeMode) "Barcode Scanner" else "Text Scanner"
-            modeLabel.text = mode
-            showSnackbar("Switched to $mode mode.")
-        }
+            showSnackbar("Switched to ${if (isBarcodeMode) "Barcode" else "Text"} mode.")
 
-        notepadButton.setOnClickListener {
-            NotepadDialog().show(supportFragmentManager, "NotepadDialog")
+            val iconRes = if (isBarcodeMode) R.drawable.scan else R.drawable.note
+            captureButton.setImageResource(iconRes)
         }
 
         saveToAllergyBtn.setOnClickListener {
             showSnackbar("Ingredients saved to allergy list!")
-        }
-
-        addAllTextBtn.setOnClickListener {
-            showSnackbar("All text added.")
         }
 
         manualInputBtn.setOnClickListener {

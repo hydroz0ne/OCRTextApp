@@ -18,71 +18,49 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Circular Scan Button -->
-    <Button
+    <ImageButton
         android:id="@+id/captureButton"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="130dp"
+        android:layout_width="74dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/circlebutton"
-        android:strokeColor="#1C2840"
-        android:text=""
+        android:scaleType="centerInside"
+        android:src="@drawable/note"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <!-- Mode Switch Button -->
-    <Button
+    <ImageButton
         android:id="@+id/switchmodebutton"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginBottom="155dp"
-        android:background="@drawable/circlebutton"
-        android:text=""
+        android:layout_marginStart="228dp"
+        android:layout_marginBottom="75dp"
+        android:background="@drawable/secondary_btn"
+        android:scaleType="centerInside"
+        android:src="@drawable/swap"
+        android:alpha="0.5"
+        android:padding="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <!-- Default state of the scanner is text. -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginBottom="130dp"
-        android:text="Text Scanner"
-        android:textColor="@android:color/black"
+        android:layout_marginStart="230dp"
+        android:layout_marginBottom="40dp"
+        android:text="Swap Modes"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switchmodebutton"
-        tools:ignore="HardcodedText" />
-
-    <!-- Notepad Button -->
-    <Button
-        android:id="@+id/notepadButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginBottom="155dp"
-        android:background="@drawable/circlebutton"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/notepadLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginBottom="130dp"
-        android:text="Notepad"
-        android:textColor="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notepadButton"
         tools:ignore="HardcodedText" />
 
     <!-- Bottom Sheet Styled Popup -->
@@ -105,64 +83,61 @@
             android:id="@+id/ingredientLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ingredients List"
-            android:textStyle="bold"
-            android:textColor="#1C2840"
-            android:textSize="18sp"
+            android:layout_marginStart="4dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginStart="4dp" />
+            android:text="Ingredients List"
+            android:fontFamily="@font/inter"
+            android:textColor="#1C2840"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="left"
             android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginBottom="12dp"
-            android:layout_marginTop="4dp"
             android:weightSum="2">
 
-            <Button
-                android:id="@+id/addAllTextBtn"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Add all text"
-                android:background="@drawable/pillbutton"
-                android:textColor="#1C2840"
-                android:textAllCaps="false"
-                android:layout_marginEnd="6dp" />
-
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/manualInputBtn"
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Manual Input"
+                android:layout_height="25dp"
+                android:layout_weight=".75"
                 android:background="@drawable/pillbutton"
-                android:textColor="#1C2840"
+                android:fontFamily="@font/inter"
+                android:text="Manual Input"
                 android:textAllCaps="false"
-                android:layout_marginStart="6dp" />
+                android:textColor="#1B2840" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/extractedTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
             android:layout_marginTop="6dp"
-            android:lineSpacingExtra="4dp" />
-
-        <Button
-            android:id="@+id/saveToAllergyBtn"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@android:color/black" />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save to Allergy List"
-            android:textColor="@android:color/white"
-            android:textAllCaps="false"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@android:color/holo_green_dark"
-            android:drawableStart="@drawable/addlogo"
-            android:drawablePadding="8dp" />
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/saveToAllergyBtn"
+                android:layout_width="153dp"
+                android:layout_height="33dp"
+                android:background="@drawable/save_button_bg"
+                android:fontFamily="@font/inter"
+                android:text="Save to Allergy List +"
+                android:textAllCaps="false"
+                android:textSize="12dp"
+                android:textColor="@android:color/white"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
