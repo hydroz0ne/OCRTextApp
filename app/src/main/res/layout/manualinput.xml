@@ -8,10 +8,13 @@
     <EditText
         android:id="@+id/manualEditText"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:hint="Edit scanned text"
-        android:gravity="top"
+        android:layout_height="200dp"
         android:background="@android:drawable/edit_text"
-        android:inputType="textMultiLine" />
+        android:fontFamily="@font/inter"
+        android:gravity="top"
+        android:hint="Edit scanned text"
+        android:inputType="textMultiLine"
+        android:textColor="#000000"
+        android:textSize="14sp" />
 
 </LinearLayout>

@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
             val editText = dialogView.findViewById<EditText>(R.id.manualEditText)
             editText.setText(extractedTextView.text.toString())
 
-            val dialog = android.app.AlertDialog.Builder(this)
+            val dialog = android.app.AlertDialog.Builder(this, R.style.WhiteRoundedDialog)
                 .setTitle("Edit Scanned Text")
                 .setView(dialogView)
                 .setPositiveButton("Save") { _, _ ->
@@ -207,6 +207,7 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    @SuppressLint("SetTextI18n")
     private fun analyzeImageForText(image: InputImage) {
         val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
         recognizer.process(image)
